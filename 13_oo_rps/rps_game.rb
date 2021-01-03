@@ -12,8 +12,9 @@ class Move
   attr_reader :value
 
   def self.valid?(choice)
+    choice = choice.downcase
     ABBREVIATIONS.each do |abbreviation|
-      return true if choice.downcase.start_with?(abbreviation)
+      return true if choice.start_with?(abbreviation)
     end
     false
   end
