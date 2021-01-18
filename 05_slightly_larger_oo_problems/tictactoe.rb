@@ -140,6 +140,7 @@ class Human < Player
       break if valid_name?(name)
       puts 'Please enter a valid name.'
     end
+    puts
     name
   end
 
@@ -160,7 +161,6 @@ class Computer < Player
 
   def initialize(marker)
     @name = COMPUTER_NAMES.sample
-    puts
     super(marker)
   end
 end
