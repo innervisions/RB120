@@ -202,11 +202,10 @@ class TTTGame
   end
 
   def play_round
-    display_gamestate
     loop do
+      display_gamestate if human_turn?
       current_player_moves
       break if board.someone_won? || board.full?
-      display_gamestate if human_turn?
     end
     display_round_result
     round_winner.score += 1 if round_winner
