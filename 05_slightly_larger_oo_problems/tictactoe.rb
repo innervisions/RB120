@@ -332,11 +332,6 @@ class TTTGame
     computer.score = 0
   end
 
-  def display_play_again_message
-    puts "Let's play again!"
-    puts
-  end
-
   def clear_screen
     system('clear') || system('clr')
   end
