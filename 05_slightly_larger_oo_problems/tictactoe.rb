@@ -187,9 +187,13 @@ class TTTGame
     display_welcome_message
     @board = Board.new
     @human = Human.new
-    @computer = (human.marker == 'X' ? Computer.new('O') : Computer.new('X'))
+    @computer = Computer.new(set_computer_marker)
     @current_player = random_player
     @round = 1
+  end
+
+  def set_computer_marker
+    human.marker == 'X' ? 'O' : 'X'
   end
 
   def play_match
@@ -237,14 +241,16 @@ class TTTGame
   end
 
   def human_moves
-    square = nil
+    square_int = nil
     loop do
       puts "Choose a square (#{joinor(board.unmarked_keys)}):"
-      square = gets.to_i
-      break if board.unmarked_keys.include?(square)
+      square = gets.chomp
+      square_int = square.to_i
+      break if square.to_f == square_int &&
+               board.unmarked_keys.include?(square_int)
       puts "Sorry, that's not a valid choice."
     end
-    board[square] = human.marker
+    board[square_int] = human.marker
   end
 
   def computer_moves
